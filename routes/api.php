@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AdsController;
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->group(function () {
+    // Users endpoints
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    // Ads endpoints
+    Route::post('/ads', [AdsController::class, 'store']);
+    Route::get('/ads', [AdsController::class, 'index']);
+    Route::get('/ads/{ads}', [AdsController::class, 'show']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);
