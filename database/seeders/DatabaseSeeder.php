@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ads;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+         $user = User::factory()->create([
+             'email' => 'user@obay-dev.com',
+             'phone' => '+9715555544444',
+             'password' => bcrypt('123456')
+         ]);
+
+         Ads::factory()->create();
     }
 }
